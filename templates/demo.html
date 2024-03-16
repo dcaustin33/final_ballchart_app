@@ -46,6 +46,23 @@
         text-shadow: none;
         margin-left: 1rem;
         }
+        @media only screen and (max-width: 600px) {
+          .container {
+            flex-direction: column;
+          }
+          
+          .video-container, .picture-container {
+            flex: none; /* This will ignore the 1.5 and 1 flex ratios and make them take full width */
+            width: 100%;
+          }
+          
+          .next-button {
+            width: 100%;
+            display: flex;
+            justify-content: center; /* This centers the button horizontally */
+            margin-top: 1rem; /* Adds some space between the video and the button */
+          }
+        }
     </style>
   </head>
   <body id = "body">
