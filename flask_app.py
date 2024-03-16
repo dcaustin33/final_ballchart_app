@@ -20,14 +20,25 @@ def home():
     lsu_umkc_data = get_shot_labels(lsu_ukmc_name, time)
     unc_duke_data = get_shot_labels(unc_duke_name, time)
     user_agent = request.headers.get("User-Agent")
-    return render_template(
-        "demo.html",
-        video=video,
-        load_time=load_time,
-        ken_ten_data=ken_ten_data,
-        lsu_umkc_data=lsu_umkc_data,
-        unc_duke_data=unc_duke_data,
-    )
+    
+    if "Mobile" in user_agent:
+        return render_template(
+            "demo_mobile.html",
+            video=video,
+            load_time=load_time,
+            ken_ten_data=ken_ten_data,
+            lsu_umkc_data=lsu_umkc_data,
+            unc_duke_data=unc_duke_data,
+        )
+    else:
+        return render_template(
+            "demo.html",
+            video=video,
+            load_time=load_time,
+            ken_ten_data=ken_ten_data,
+            lsu_umkc_data=lsu_umkc_data,
+            unc_duke_data=unc_duke_data,
+        )
 
 
 def process_line(line):
@@ -72,4 +83,4 @@ def create_app():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True)

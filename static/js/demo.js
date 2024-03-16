@@ -65,7 +65,7 @@ function nextLabel() {
 
   var text = document.getElementById("shot_binary");
   //format to only be 2 decimal places
-  text.innerHTML = 'Shot Confidence: ' + parseFloat(shot_confidence).toFixed(2);
+  text.innerHTML = 'Shot Taken Confidence: ' + parseFloat(shot_confidence).toFixed(2);
   var text = document.getElementById("shot_timestamp");
   text.innerHTML = 'Precise Shot Time Stamp: ' + predicted_timestamp;
   var text = document.getElementById("shot_quality");
