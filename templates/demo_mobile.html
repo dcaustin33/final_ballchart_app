@@ -17,8 +17,12 @@
       min-height: 100vh;
       padding: 10px;
     }
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
     .video-container, .picture-container {
-      width: 100%; /* Full width */
       padding: 10px;
       box-sizing: border-box; /* Include padding in width calculation */
     }
@@ -32,6 +36,10 @@
       padding: 10px;
       font-size: large;
     }
+    .next-button {
+      margin-top: 10px;
+      text-align: center;
+    }
     .next-button button {
       background-color: blue;
       border: none;
@@ -39,21 +47,36 @@
       border-radius: 5px;
       font-size: medium;
     }
+
+    @media (min-width: 768px) {
+      .content-container {
+        flex-direction: row;
+      }
+      .next-button {
+        margin-top: 0;
+        text-align: right;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="video-container">
-      <label for="game_menu" style="color: white;">Choose a game:</label>
-      <select name="game_select" id="game_select" onChange="changeVideo()">
-        <option value="Ken_Ten">Kentucky vs Tennessee 2022</option>
-        <option value="LSU_UMKC">LSU vs UKMC 2022</option>
-        <option value="UNC_Duke">UNC vs Duke 2022</option>
-      </select> 
-      <video id='Test_Video'>
-        <source src="{{video}}" type="video/mp4">
-        Does not support
-      </video>
+    <div class="content-container">
+      <div class="video-container">
+        <label for="game_menu" style="color: white;">Choose a game:</label>
+        <select name="game_select" id="game_select" onChange="changeVideo()">
+          <option value="Ken_Ten">Kentucky vs Tennessee 2022</option>
+          <option value="LSU_UMKC">LSU vs UKMC 2022</option>
+          <option value="UNC_Duke">UNC vs Duke 2022</option>
+        </select> 
+        <video id='Test_Video' controls playsinline>
+          <source src="{{video}}" type="video/mp4">
+          Does not support
+        </video>
+      </div>
+      <div class="next-button">
+        <button type="button" id='Next' onclick="nextLabel()">Next</button>
+      </div>
     </div>
     <div class="picture-container">
       <p>Highlighted region is where the AI system has predicted the shot occurred.</p> 
@@ -63,10 +86,6 @@
       <p><b>Precise Shot Time Stamp: </b><span id='shot_timestamp'></span></p>
       <p><b>Shot Quality: </b><span id='shot_quality'></span></p>
     </div>
-  </div>
-  <div class="next-button">
-    <button type="button" id='Next' onclick="nextLabel()">Next</button>
-    <p>Click next to iterate through the shots predicted by the model with Shot Quality and Cluster Location predictions</p>
   </div>
   <!-- Scripts -->
   <script src="../static/js/demo.js"></script>
