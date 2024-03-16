@@ -111,7 +111,7 @@ function changeVideo() {
 }
 
 function change_picture(cluster, flip = false) {
-  directory = './static/court_locations/'
+  directory = '../static/court_locations/'
 
   const cluster_to_file = {
     1: directory + 'left_paint.jpeg', 2: directory + 'left_left_mid_range.jpeg',
