@@ -48,6 +48,7 @@ function nextLabel() {
   var shot_cluster = parseInt(element.split(',')[4]) + 1;
   var shot_quality = element.split(',')[5];
   var side = element.split(',')[6];
+  var ground_truth_timestamp = element.split(',')[7];
   if (parseFloat(side) < 0.5) {
     var flip = false;
   }
@@ -67,9 +68,11 @@ function nextLabel() {
   //format to only be 2 decimal places
   text.innerHTML = 'Shot Confidence: ' + parseFloat(shot_confidence).toFixed(2);
   var text = document.getElementById("shot_timestamp");
-  text.innerHTML = 'Precise Shot Time Stamp: ' + predicted_timestamp;
+  text.innerHTML = 'Predicted Shot Time Stamp: ' + predicted_timestamp;
   var text = document.getElementById("shot_quality");
   text.innerHTML = 'Shot Quality: ' + parseFloat(shot_quality).toFixed(2);;;
+  var text = document.getElementById("ground_truth_timestamp");
+  text.innerHTML = 'Ground Truth Time Stamp: ' + ground_truth_timestamp;
 
 
   change_picture(shot_cluster, flip);

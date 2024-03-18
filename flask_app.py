@@ -59,10 +59,11 @@ def get_shot_labels(name, time):
         cluster = row["predicted_cluster_label"]
         shot_quality = row["predicted_shot_quality"]
         shot_side = row["predicted_shot_side"]
+        actual_timestamp = row["actual_timestamp"]
 
         items.append(
             f"{start_time}, {end_time}, {predicted_time_stamp}, {shot_confidence}, "
-            f"{cluster}, {shot_quality}, {shot_side}"
+            f"{cluster}, {shot_quality}, {shot_side}, {actual_timestamp}"
         )
 
     return items
