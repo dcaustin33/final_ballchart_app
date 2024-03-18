@@ -66,7 +66,7 @@ function nextLabel() {
 
   var text = document.getElementById("shot_binary");
   //format to only be 2 decimal places
-  text.innerHTML = 'Shot Confidence: ' + parseFloat(shot_confidence).toFixed(2);
+  text.innerHTML = 'Shot Taken Confidence: ' + parseFloat(shot_confidence).toFixed(2) * 100 + '%';
   var text = document.getElementById("shot_timestamp");
   text.innerHTML = 'Predicted Shot Time Stamp: ' + predicted_timestamp;
   var text = document.getElementById("shot_quality");
@@ -114,7 +114,7 @@ function changeVideo() {
 }
 
 function change_picture(cluster, flip = false) {
-  directory = './static/court_locations/'
+  directory = '../static/court_locations/'
 
   const cluster_to_file = {
     1: directory + 'left_paint.jpeg', 2: directory + 'left_left_mid_range.jpeg',
